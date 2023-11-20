@@ -1,0 +1,30 @@
+<----------------------------- TESTING <---------------------
+// For UDP Connection we use these command 
+
+libcamera-vid -t 0 --inline -o udp://<ip-addr>:<port>
+
+vlc udp://@:<port> :demux=h264
+
+ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+
+// For TCP Connection we use these commands 
+
+libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
+
+vlc tcp/h264://<ip-addr-of-server>:<port>
+
+ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+
+// For RTSP Connection
+
+libcamera-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+
+vlc rtsp://<ip-addr-of-server>:8554/stream1
+
+ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+
+
+
+<------ For using High framerate capture we try this command 
+
+libcamera-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n

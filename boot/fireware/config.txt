@@ -1,0 +1,27 @@
+# Comment out the automatic camera detection entry
+# camera_auto_detect=1
+
+# Select your camera module by uncommenting the appropriate line based on your camera:
+# V1 camera (OV5647)
+# dtoverlay=ov5647
+
+# V2 camera (IMX219)
+# dtoverlay=imx219
+
+# HQ camera (IMX477)
+# dtoverlay=imx477
+
+# GS camera (IMX296)
+# dtoverlay=imx296
+
+# Camera Module 3 (IMX708)
+# dtoverlay=imx708
+
+# IMX290 and IMX327
+# dtoverlay=imx290,clock-frequency=74250000 or dtoverlay=imx290,clock-frequency=37125000
+
+# IMX378
+# dtoverlay=imx378
+
+# OV9281
+# dtoverlay=ov9281

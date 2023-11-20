@@ -1,0 +1,25 @@
+Default shutdown wattage is around 1 to 1.4W. However this can be decreased by manually editing the EEPROM
+configuration, 
+
+sudo rpi-eeprom-config -e and change the settings to:
+
+
+
+# Enable UART output during the boot process for debugging or information
+BOOT_UART=1
+
+# Power off the Raspberry Pi completely when halted (shutdown)
+POWER_OFF_ON_HALT=1
+
+# Define the boot order bit pattern
+# Bit 0: USB mass storage device
+# Bit 1: SD card
+# Bit 2: Network boot (PXE)
+# Bit 3: Boot from USB device
+BOOT_ORDER=0xf416  # Binary: 1111 0100 0001 0110
+# This means the Raspberry Pi will attempt to boot in the order of:
+# 1. USB mass storage device
+# 2. SD card
+# 3. Network boot (PXE)
+# 4. Boot from USB device
+
