@@ -1,0 +1,13 @@
+int copy_virt_memory(struct task_struct *dst) {
+	struct task_struct* src = current;
+	for (int i = 0; i < src->mm.user_pages_count; i++) {
+		unsigned long kernel_va = allocate_user_page(dst, src->mm.user_pages[i].virt_addr);
+		if( kernel_va == 0) {
+			return -1;
+		}
+		memcpy(kernel_va, src->mm.user_pages[i].virt_addr, PAGE_SIZE);
+	}
+	return 0;
+}
+
+// This above function iterates over user_pages array, which contains all pages, allocated by the current process. 

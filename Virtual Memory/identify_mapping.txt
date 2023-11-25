@@ -1,0 +1,10 @@
+// This below code is for Identity Paging, Identity oaging and 1:1 pagig are terLet's say you decide to use Identity Paging in the lowest 1MB. In this case vaddr 00000000..00000fff are mapped to frame #00000, vaddr 00001000..00001fff are mapped to frame #00001, and so on. (vaddr 000ff000..000fffff are mapped to frame #000ff)
+
+WE can easily do this with a loop filling the page table:
+
+ void idpaging(uint32_t *first_pte, vaddr from, int size) {
+    from = from & 0xfffff000; // discard bits we don't want
+    for(; size>0; from += 4096, size -= 4096, first_pte++){
+       *first_pte = from | 1;     // mark page present.
+    }
+ }
