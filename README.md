@@ -2,4 +2,4 @@
 
 ##  Project Discription - A minimal OS for the Raspberry Pi, suitable for educational purposes
 
-Learn from and implement code from the following repository, which contains information about Raspberry Pi OS; https://github.com/s-matyukevich/raspberry-pi-os
+Learn from and implement code from the following repository, which contains information about Raspberry Pi OS: https://github.com/s-matyukevich/raspberry-pi-os
